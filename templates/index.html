@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: monospace;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: blanchedalmond;
+        }
+
+        .main {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 10px 10px 12px -10px black;
+            background-color: brown;
+            border: 1px solid black;
+        }
+
+        h1 {
+            margin: 10px 20px 20px 0px;
+            color: white;
+        }
+
+        #inp {
+            height: 25px;
+            width: 20vw;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 3px;
+            cursor: pointer;
+        }
+
+        .result {
+            display: flex;
+            justify-content: space-evenly;
+            color: white;
+            margin: 10px 0px;
+        }
+
+        .copy-btn {
+            background-color: whitesmoke;
+            border: 1px solid grey;
+            border-radius: 2px;
+            color: black;
+            padding: 3px;
+        }
+
+        .copy-btn:hover {
+            background-color: rgb(238, 238, 238);
+            cursor: pointer;
+        }
+
+        h2 {
+            margin-right: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: whitesmoke;
+        }
+
+        a:hover {
+            color: rgb(204, 200, 200);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1>Url Shortener</h1>
+        <form action="" class="form" method="post">
+            {% csrf_token %}
+            {% if slug != None %}
+            <input type="text" name="link" id="inp" placeholder="{{ link }}">
+            <button type="submit" class="shorten-btn">Shorten</button>
+        </form>
+        <div class="result" id="result">
+            <h2>
+                <a href="http://localhost:8000/{{ slug }}" id="txt" target='_blank'>
+                    http://localhost:8000/{{ slug }}
+                </a>
+            </h2>
+        </div>
+        {% else %}
+        <input type="text" name="link" id="inp" placeholder="Enter URL">
+        <button type="submit" class="shorten-btn">Shorten</button>
+        </form>
+        {% endif %}
+    </div>
+</body>
+
+</html>
